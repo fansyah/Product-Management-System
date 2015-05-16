@@ -8,9 +8,9 @@ class ProductsController < ApplicationController
         
         @keyword = params[:filter][:name] if params[:filter].present?
         if @keyword.present?
-          @products = Product.where("name LIKE ?", "%#{@keyword}%")
+          @products = Product.paginate(:page => params[:page], :per_page => 5).where("name LIKE ?", "%#{@keyword}%")
         else
-          @products = Product.paginate(:page => params[:page], :per_page => 5)                          
+          @products = Product.paginate(:page => params[:page], :per_page => 5)
         end
 
   end
