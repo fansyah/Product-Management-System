@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Navinsapp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class = "col-md-8 col-md-offset-2">
+<%= link_to "home","/" %>
+<%= yield %>
+<%= will_paginate @collection, renderer: BootstrapPagination::Rails %>
+</div>
+</body>
+</html>
