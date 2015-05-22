@@ -43,10 +43,11 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'spring', "~>1.3.3"
   gem 'quiet_assets'
   gem 'will_paginate', '~> 3.0.6'
   gem 'kaminari'
   gem 'will_paginate-bootstrap'
+  gem 'paperclip', '~> 4.2'
 end
 

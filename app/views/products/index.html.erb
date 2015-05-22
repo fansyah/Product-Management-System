@@ -4,11 +4,17 @@
 <%= f.label :name, :class => 'control-label' %>
 <%= f.text_field :name, value: @keyword, :class => 'form-control' %>
 <%= f.submit "cari", class: "btn btn-success" %>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_product_path,
+            :class => 'btn btn-primary' %>            
 <% end %>
 
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
+<%= will_paginate @products, renderer: BootstrapPagination::Rails %>
 
 <table class="table table-striped">
   <thead>
@@ -17,6 +23,7 @@
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:price) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:image) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -27,6 +34,7 @@
         <td><%= product.name %></td>
         <td><%= product.price %></td>
         <td><%=l product.created_at %></td>
+        <td><%= image_tag product.image.url(:medium) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_product_path(product), :class => 'btn btn-default btn-xs' %>
@@ -40,6 +48,3 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_product_path,
-            :class => 'btn btn-primary' %>
