@@ -16,6 +16,10 @@
 
 <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
 
+<%= form_tag '/', method: :get do%>
+  <%= select_tag 'urutkan', options_for_select([['Urutkan berdasarkan nama', 'nama'], ['Urutkan berdasarkan tanggal', 'tanggal']], 'nama')%>
+  <%= submit_tag 'submit', class: "btn btn-sm btn-primary"%>
+<% end %>
 <table class="table table-striped">
   <thead>
     <tr>
