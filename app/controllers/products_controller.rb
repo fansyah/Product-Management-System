@@ -14,7 +14,6 @@ class ProductsController < ApplicationController
         end
 
   end
-  # contoh
   # GET /products/1
   # GET /products/1.json
   def show
