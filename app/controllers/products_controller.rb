@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
   def index
     # 'desc' atau descending = diurutkan dari yg akhir ke awal. Z - A / paling lama dulu baru ke yg baru
     #  ascending atau ascending = diurutkan dari yg awal ke akhir. A - Z / paling baru dulu baru ke yg lama
+    Updated upstream
     products = Product.all
     products.order('name asc') if params[:urutkan] == "nama" 
     products.order('created_at asc') if params[:urutkan] == "tanggal"
@@ -20,6 +21,7 @@ class ProductsController < ApplicationController
 
     
   end
+  
   # GET /products/1
   # GET /products/1.json
   def show
