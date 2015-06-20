@@ -8,9 +8,13 @@ class ProductsController < ApplicationController
     # 'desc' atau descending = diurutkan dari yg akhir ke awal. Z - A / paling lama dulu baru ke yg baru
     #  ascending atau ascending = diurutkan dari yg awal ke akhir. A - Z / paling baru dulu baru ke yg lama
 
-    products = Product.all
-    products.order('name asc') if params[:urutkan] == "nama" 
-    products.order('created_at asc') if params[:urutkan] == "tanggal"
+    if params[:urutkan] == "nama" 
+      products = Product.order('name asc') 
+    elsif params[:urutkan] == "tanggal"
+      products = Product.order('created_at desc')
+    else
+      products = Product.all
+    end
 
     @keyword = params[:filter][:name] if params[:filter].present?
     if @keyword.present?
