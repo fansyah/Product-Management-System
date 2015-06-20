@@ -14,13 +14,17 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :image, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.file_field :image, :class => 'form-control' %>
+  
+    <div class="control-group">
+      <%= f.label :image, :class => 'control-label' %>
+      <%= f.fields_for :product_images do |fpi| %>
+        <div class="controls">
+          <%= fpi.file_field :picture, :class => 'form-control' %>
+        </div>
+      <% end %>
+      <%#= error_span(@product[:image]) %>
     </div>
-    <%= error_span(@product[:image]) %>
-  </div>
+  
 
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>

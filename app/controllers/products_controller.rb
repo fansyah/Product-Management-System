@@ -34,6 +34,9 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    3.times.each do |t|
+      @product.product_images.new
+    end
   end
 
   # GET /products/1/edit
@@ -43,6 +46,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
+    debugger
     @product = Product.new(product_params)
 
     respond_to do |format|
@@ -88,6 +92,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :price, :image)
+      params.require(:product).permit(:name, :price, product_images_attributes: :picture)
     end
 end
